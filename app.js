@@ -29,17 +29,25 @@ app.get('/', (req, res) => {
 //產生短網址
 app.post('/', (req, res) => {
   const url = req.body.url
+  //若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出並提示使用者
+  if (url.length === 0) {
+    const alert = 'Please input URL'
+    res.render('index', { alert, url })
+  }
 
-
-  let shortUrl = generateURL()
-  return URL.create({
-    originalUrl: url,
-    shortenUrl: shortUrl
-  })
-    .then(() => {
-      res.render('urlshorter', { shortUrl, indexUrl })
+  else {
+    let shortUrl = generateURL()
+    return URL.create({
+      originalUrl: url,
+      shortenUrl: shortUrl
     })
-    .catch(error => console.log(error))
+      .then(() => {
+        res.render('urlshorter', { shortUrl, indexUrl })
+      })
+      .catch(error => console.log(error))
+  }
+
+
 
 
 })

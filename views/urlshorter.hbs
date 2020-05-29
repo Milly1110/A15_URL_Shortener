@@ -16,9 +16,9 @@
   <script>
     function copy() {
       const link = document.querySelector('.shorturllink')
-      document.getSelection().selectAllChildren(link)
-      document.execCommand("copy")
-      window.getSelection().removeAllRanges()
+      window.getSelection().selectAllChildren(link)  //獲取要複製的內容
+      document.execCommand("copy")  //進行複製操作
+      alert("已複製網址")
     }
   </script>
 </div>
