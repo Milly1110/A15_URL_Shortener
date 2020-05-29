@@ -1,13 +1,15 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const URL = require('./models/URLshorten')
+const generateURL = require('./generate_url')
 
 const app = express()
 const PORT = 3000
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
-mongoose.connect('mongodb://localhost/URL-Shortener', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/url_shortener', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on = ('error', () => {
   console.log('mongodb error!')
@@ -22,10 +24,13 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 app.post('/', (req, res) => {
-  const url = req.body.url
-  return URL.create({ name })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+  // const originalUrl = req.body.originalUrl
+  const shortUrl = generateURL
+  console.log('generate URL is:', shortUrl)
+  res.render('index', { shortUrl })
+  // return URL.create({ name })
+  //   .then(() => res.redirect('/'))
+  //   .catch(error => console.log(error))
 })
 
 app.listen(PORT, () => {
