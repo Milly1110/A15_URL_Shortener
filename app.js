@@ -39,17 +39,17 @@ app.post('/', (req, res) => {
     })
     .catch(error => console.log(error))
 })
-//短網址連結
-// app.get('/:newurl', (req, res) => {
-//   const newurl = req.params
-//   URL.find({ originalUrl: newurl })
-//     .lean()
-//     .then(
-//       res.redirect(url[i].originalUrl)
-//     )
-//     .catch(error => console.log(error))
+// 短網址連結
+app.get('/:newurl', (req, res) => {
+  const { newurl } = req.params
+  //find()第一個參數定義要找尋的資料，第二個參數決定要返回的key；搜尋shortenUrl = newurl者的originalUrl
+  // URL.find({ shortenUrl: newurl }, { originalUrl: 1 })  
 
-// })
+  URL.findOne({ shortenUrl: newurl })
+    .lean()
+    .then(url => res.redirect(`${url.originalUrl}`))
+    .catch(error => console.log(error))
+})
 
 app.listen(PORT, () => {
   console.log(`Express is running on http://localhost:${PORT}`)
