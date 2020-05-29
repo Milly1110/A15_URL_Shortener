@@ -1,27 +1,17 @@
-<div class="row justify-content-center mb-3">
-  <div class="title" id="title">
-    URL Shortener <i class="fas fa-cut"></i>
-  </div>
-</div>
 <div class="row justify-content-center my-3">
-  <img src="https://www.adalphatech.com/wp-content/uploads/2019/11/URL-shortener.jpg" alt="error" style="width:250px;">
-</div>
-<div class="row justify-content-center my-3">
-  <form action="/" method="GET">
+  <form action="/" method="POST">
     <div class="flex-container">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-cut"></i></span>
         </div>
-        <input id="inputURL" type="text" placeholder="Input URL here">
+        <input id="inputURL" type="text" placeholder="Input URL here" name="url">
       </div>
       <div class="shortenBtn">
         <button class="btn btn-outline-success" id="shortenBtn" type="submit">Shorten</button>
       </div>
 
-      {{#if shortUrl}}
-      <code>{{shortUrl}}</code>
-      {{/if}}
+
 
     </div>
 

@@ -24,3 +24,9 @@ img{
   width: 30rem;
   height: 2.5rem;
 }
+/* urlshorter.hbs */
+#copyBtn{
+  margin-top: 10px;
+  width: 100px;
+  border: 2px solid ;
+}

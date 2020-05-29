@@ -9,7 +9,7 @@ function generateURL() {
   const upperletters = lowerletters.toUpperCase()
   const number = '1234567890'
   let collection = []
-  collection = collection.concat([...lowerletters]).concat([...toUpperCase]).concat([...number])
+  collection = collection.concat([...lowerletters]).concat([...upperletters]).concat([...number])
   let randomURL = ''
   for (let i = 0; i < 5; i++) {
     randomURL += random(collection)
