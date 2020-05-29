@@ -5,13 +5,20 @@
   <div>
     {{#if shortUrl}}
     <div class="shortURL">
-      <a class="shorurllink" href="{{indexUrl}}/{{shortUrl}}">{{indexUrl}}/{{shortUrl}}</a>
+      <a class="shorturllink" href="{{indexUrl}}/{{shortUrl}}">{{indexUrl}}/{{shortUrl}}</a>
     </div>
     {{/if}}
   </div>
   <div class="btn">
-    <button class="btn btn-success" type="submit" id="copyBtn">
-      COPY
-    </button>
+    <button class="btn btn-success" type="submit" id="copyBtn" onclick="copy()">COPY</button>
   </div>
+  {{!-- 使用COPY按鈕複製縮短後的網址 --}}
+  <script>
+    function copy() {
+      const link = document.querySelector('.shorturllink')
+      document.getSelection().selectAllChildren(link)
+      document.execCommand("copy")
+      window.getSelection().removeAllRanges()
+    }
+  </script>
 </div>

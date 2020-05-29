@@ -29,6 +29,8 @@ app.get('/', (req, res) => {
 //產生短網址
 app.post('/', (req, res) => {
   const url = req.body.url
+
+
   let shortUrl = generateURL()
   return URL.create({
     originalUrl: url,
@@ -38,8 +40,10 @@ app.post('/', (req, res) => {
       res.render('urlshorter', { shortUrl, indexUrl })
     })
     .catch(error => console.log(error))
+
+
 })
-// 短網址連結
+// 點選短網址連結到原始網站
 app.get('/:newurl', (req, res) => {
   const { newurl } = req.params
   //find()第一個參數定義要找尋的資料，第二個參數決定要返回的key；搜尋shortenUrl = newurl者的originalUrl
