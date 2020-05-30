@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const URL = require('../../models/URLshorten')
 const generateURL = require('../../generate_url')
-const indexUrl = 'http://localhost:3000'
+const indexUrl = 'http://fast-hamlet-09862.herokuapp.com'
 
 router.get('/', (req, res) => {
   res.render('index')
