@@ -30,11 +30,10 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const url = req.body.url
   //若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出並提示使用者
-  if (url.length === 0) {
-    const alert = 'Please input URL'
+  if (!url.includes('https://') && !url.includes('http://')) {
+    const alert = 'Please input efective URL'
     res.render('index', { alert, url })
   }
-
   else {
     let shortUrl = generateURL()
     return URL.create({
@@ -47,9 +46,6 @@ app.post('/', (req, res) => {
       .catch(error => console.log(error))
   }
 
-
-
-
 })
 // 點選短網址連結到原始網站
 app.get('/:newurl', (req, res) => {
@@ -59,7 +55,7 @@ app.get('/:newurl', (req, res) => {
 
   URL.findOne({ shortenUrl: newurl })
     .lean()
-    .then(url => res.redirect(`${url.originalUrl}`))
+    .then(url => res.redirect(url.originalUrl))
     .catch(error => console.log(error))
 })
 

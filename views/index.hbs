@@ -5,7 +5,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-cut"></i></span>
         </div>
-        <input id="inputURL" type="text" placeholder="Input URL here" name="url">
+        <input id="inputURL" type="text" placeholder="Input URL here" name="url" {{#if url}}value="{{url}}" {{/if}}
+          required>
       </div>
       <div class="shortenBtn">
         <button class="btn btn-outline-success" id="shortenBtn" type="submit">Shorten</button>
